@@ -106,8 +106,8 @@ GameObject:
   - component: {fileID: 6491131071312827085}
   - component: {fileID: 9075270125011789319}
   m_Layer: 0
-  m_Name: lamb
-  m_TagString: Untagged
+  m_Name: Lamb
+  m_TagString: Lamb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
