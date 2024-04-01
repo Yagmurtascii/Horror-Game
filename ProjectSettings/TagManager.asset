@@ -7,6 +7,9 @@ TagManager:
   - Switch
   - Lamb
   - Door
+  - BackDoor
+  - DoorLock
+  - PasswordDoor
   layers:
   - Default
   - TransparentFX
