@@ -10,6 +10,7 @@ public class PasswordManage : MonoBehaviour
     public AudioSource PasswordAudioSource;
     public AudioClip WrongPassword;
     public AudioClip CorrectPassword;
+    public AudioClip OpenDoor;
     public GameObject panel;
     
 
@@ -28,12 +29,13 @@ public class PasswordManage : MonoBehaviour
     {
         if (Password.text == "1234")
         {
-            PasswordAudioSource.PlayOneShot(CorrectPassword);
+      
             Cursor.lockState = CursorLockMode.Locked;
             Time.timeScale = 1f;
             isOpenDoor = true;
             panel.SetActive(false);
             Password.text = "";
+            PasswordAudioSource.PlayOneShot(OpenDoor);
         }
         else
         {

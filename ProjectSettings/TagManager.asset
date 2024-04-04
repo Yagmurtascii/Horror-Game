@@ -10,6 +10,9 @@ TagManager:
   - BackDoor
   - DoorLock
   - PasswordDoor
+  - BathroomDoor
+  - cloackroom
+  - RemoteControl
   layers:
   - Default
   - TransparentFX

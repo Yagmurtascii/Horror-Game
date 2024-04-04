@@ -17,12 +17,16 @@ public class CrossHairController : MonoBehaviour
     public GameObject panel;
 
 
+    public List<GameObject> objects;
+
+
     [Header("Boolean/Float")]
     public bool isActiveDoor = false;
     public bool isOpen = false;
     public bool isLightOpen = false;
     public bool ispassword = false;
     public bool isPanel = false;
+    public bool isRemoteController = false;
     public float distance = 0f;
 
     [Header("Animations")]
@@ -43,9 +47,16 @@ public class CrossHairController : MonoBehaviour
     private AudioSource backDoorSoundSource;
     [SerializeField]
     private AudioSource lightSoundSource;
+    [SerializeField]
+    private AudioSource slidingDoorSource;
+    [SerializeField]
+    private AudioSource wardobeSource;
 
     public PasswordManage passwordManage;
 
+
+    public BoxCollider boxCollider;
+  
 
     void Update()
     {
@@ -152,6 +163,54 @@ public class CrossHairController : MonoBehaviour
                     else
                         backDoorSoundSource.Play();
 
+                }
+                else if(obj.tag == "BathroomDoor")
+                {
+                    doorAnimator = obj.GetComponent<Animator>();
+                    if (!isOpen)
+                    {
+                        obj.GetComponent <BoxCollider>().isTrigger = false;
+                        doorAnimator.SetTrigger("isTrigger");
+                        isOpen = true;
+                        slidingDoorSource.Play();
+
+                    }
+                    else if (isOpen)
+                    {
+                        obj.GetComponent<BoxCollider>().isTrigger = true;
+                        doorAnimator.SetTrigger("isTrigger");
+                        isOpen = false;
+                        slidingDoorSource.Play();
+
+                    }
+                }
+                else if(obj.tag=="cloackroom")
+                {
+                    doorAnimator= obj.GetComponent<Animator>();
+                    if (!isOpen)
+                    {
+                        
+                        doorAnimator.SetTrigger("isTrigger");
+                        isOpen = true;
+                        wardobeSource.Play();
+
+                    }
+
+                    else if (isOpen)
+                    {
+                        doorAnimator.SetTrigger("isTrigger");
+                        isOpen = false;
+                        wardobeSource.Play();
+
+                    }
+                }
+
+
+                else if (obj.tag == "RemoteControl")
+                {
+                    objects.Add(obj);
+                    isRemoteController = true;
+                    Destroy(obj);
                 }
             }
 
