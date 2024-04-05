@@ -20,11 +20,11 @@ public class InventoryController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyUp(KeyCode.E) && !isPanelOpen)
+        if (Input.GetKeyUp(KeyCode.Space) && !isPanelOpen)
         {
             ManageOpenInventory();
         }
-        else if (Input.GetKeyUp(KeyCode.E) && isPanelOpen)
+        else if (Input.GetKeyUp(KeyCode.Space) && isPanelOpen)
         {
             ManageCloseInventory();
         }

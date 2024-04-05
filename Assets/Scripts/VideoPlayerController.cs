@@ -14,13 +14,13 @@ public class VideoPlayerController : MonoBehaviour
 
         if (Mathf.Abs(dif) < 80f && Mathf.Abs(dif) > 10)
         {
-            if (crossHairController.isRemoteController && Input.GetKeyDown(KeyCode.Mouse1) && !isRemoteOpen)
+            if (crossHairController.isRemoteController && Input.GetKeyDown(KeyCode.E) && !isRemoteOpen)
             {
                 videoPlayer.enabled = true;
                 isRemoteOpen = true;
                 audio.Play();
             }
-            else if (isRemoteOpen && Input.GetKeyDown(KeyCode.Mouse1))
+            else if (isRemoteOpen && Input.GetKeyDown(KeyCode.E))
             {
                 videoPlayer.enabled = false;
                 isRemoteOpen = false;
