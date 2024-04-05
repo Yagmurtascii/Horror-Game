@@ -51,12 +51,14 @@ public class CrossHairController : MonoBehaviour
     private AudioSource slidingDoorSource;
     [SerializeField]
     private AudioSource wardobeSource;
+    [SerializeField]
+    private AudioSource mainDoor;
 
     public PasswordManage passwordManage;
 
 
     public BoxCollider boxCollider;
-  
+
 
     void Update()
     {
@@ -164,12 +166,12 @@ public class CrossHairController : MonoBehaviour
                         backDoorSoundSource.Play();
 
                 }
-                else if(obj.tag == "BathroomDoor")
+                else if (obj.tag == "BathroomDoor")
                 {
                     doorAnimator = obj.GetComponent<Animator>();
                     if (!isOpen)
                     {
-                        obj.GetComponent <BoxCollider>().isTrigger = false;
+                        obj.GetComponent<BoxCollider>().isTrigger = false;
                         doorAnimator.SetTrigger("isTrigger");
                         isOpen = true;
                         slidingDoorSource.Play();
@@ -184,12 +186,12 @@ public class CrossHairController : MonoBehaviour
 
                     }
                 }
-                else if(obj.tag=="cloackroom")
+                else if (obj.tag == "cloackroom")
                 {
-                    doorAnimator= obj.GetComponent<Animator>();
+                    doorAnimator = obj.GetComponent<Animator>();
                     if (!isOpen)
                     {
-                        
+
                         doorAnimator.SetTrigger("isTrigger");
                         isOpen = true;
                         wardobeSource.Play();
@@ -211,6 +213,11 @@ public class CrossHairController : MonoBehaviour
                     objects.Add(obj);
                     isRemoteController = true;
                     Destroy(obj);
+                }
+
+                else if (obj.tag == "MainDoor")
+                {
+                    mainDoor.Play();
                 }
             }
 

@@ -13,6 +13,9 @@ TagManager:
   - BathroomDoor
   - cloackroom
   - RemoteControl
+  - MainDoor
+  - CheckGround
+  - Stairs
   layers:
   - Default
   - TransparentFX
