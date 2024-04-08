@@ -16,6 +16,8 @@ TagManager:
   - MainDoor
   - CheckGround
   - Stairs
+  - Drawer
+  - Key
   layers:
   - Default
   - TransparentFX

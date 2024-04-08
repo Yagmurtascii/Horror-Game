@@ -23,6 +23,7 @@ public class CrossHairController : MonoBehaviour
     [Header("Boolean/Float")]
     public bool isActiveDoor = false;
     public bool isOpen = false;
+    public bool isDrawerOpen = false;
     public bool isLightOpen = false;
     public bool ispassword = false;
     public bool isPanel = false;
@@ -53,6 +54,8 @@ public class CrossHairController : MonoBehaviour
     private AudioSource wardobeSource;
     [SerializeField]
     private AudioSource mainDoor;
+    [SerializeField]
+    private AudioSource drawerSound;
 
     public PasswordManage passwordManage;
 
@@ -206,19 +209,46 @@ public class CrossHairController : MonoBehaviour
 
                     }
                 }
-
-
                 else if (obj.tag == "RemoteControl")
                 {
                     objects.Add(obj);
                     isRemoteController = true;
                     Destroy(obj);
                 }
-
                 else if (obj.tag == "MainDoor")
                 {
                     mainDoor.Play();
                 }
+                else if (obj.tag == "Drawer" )
+                {
+                    doorAnimator = obj.GetComponentInParent<Animator>();
+
+                    if (!isDrawerOpen)
+                    {
+                        
+                        doorAnimator.SetTrigger("isTrigger");
+                        isDrawerOpen = true;
+                        drawerSound.Play();
+
+                    }
+                    else if (isDrawerOpen)
+                    {
+
+                      
+                        doorAnimator.SetTrigger("isTrigger");
+                        isDrawerOpen = false;
+                        drawerSound.Play();
+
+                    }
+
+                }
+                else if (obj.tag == "Key")
+                {
+                   
+                    Destroy(obj);
+
+                }
+
             }
 
         }
