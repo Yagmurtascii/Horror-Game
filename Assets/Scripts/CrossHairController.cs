@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
@@ -17,7 +18,10 @@ public class CrossHairController : MonoBehaviour
     public GameObject panel;
 
 
-    public List<GameObject> objects;
+
+    [Header("Inventory Bool Values")]
+    public bool isKeyTaken = false;
+    public bool isRemoteControllerTaken = false;
 
 
     [Header("Boolean/Float")]
@@ -27,6 +31,7 @@ public class CrossHairController : MonoBehaviour
     public bool isLightOpen = false;
     public bool ispassword = false;
     public bool isPanel = false;
+    public bool isBattery = false;
     public bool isRemoteController = false;
     public float distance = 0f;
 
@@ -62,6 +67,7 @@ public class CrossHairController : MonoBehaviour
 
     public BoxCollider boxCollider;
 
+    public int count = 0;
 
     void Update()
     {
@@ -91,12 +97,10 @@ public class CrossHairController : MonoBehaviour
                     }
                     else if (isOpen)
                     {
-
                         obj.GetComponent<BoxCollider>().isTrigger = false;
                         doorAnimator.SetTrigger("isTrigger");
                         isOpen = false;
                         doorOpenSource.Play();
-
                     }
 
                 }
@@ -211,7 +215,7 @@ public class CrossHairController : MonoBehaviour
                 }
                 else if (obj.tag == "RemoteControl")
                 {
-                    objects.Add(obj);
+                    isRemoteControllerTaken=true;
                     isRemoteController = true;
                     Destroy(obj);
                 }
@@ -246,7 +250,16 @@ public class CrossHairController : MonoBehaviour
                 {
                    
                     Destroy(obj);
+                    isKeyTaken = true;
 
+                }
+               
+                else if (obj.tag == "Battery")
+                {
+
+                    Destroy(obj);
+                    isBattery = true;
+                    count++;
                 }
 
             }

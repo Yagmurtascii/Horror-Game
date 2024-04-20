@@ -18,6 +18,7 @@ TagManager:
   - Stairs
   - Drawer
   - Key
+  - Battery
   layers:
   - Default
   - TransparentFX
